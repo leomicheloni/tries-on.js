@@ -1,0 +1,23 @@
+﻿<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+</head>
+<body>
+	<h1>¡Super servidor!</h1>
+	
+	<h3>Quiero jugar</h3>
+	<form action="http://localhost:3002/jugador" method="POST">
+		<legend>Ingrese su nombre y su dirección. Se enviarán a la dirección las preguntas que debe responder</legend>
+		<div>
+			<label>Nombre: </label>
+			<input type="text" name="nombre" />
+		</div>
+		<div>
+			<label>Dirección de mi cliente: (ejemplo http://192.168.2.45:3000)</label>
+			<input type="text" name="url" />
+		</div>
+		
+		<input type="submit" value="Anotarme" />
+	</form>
+</body>
+</html>

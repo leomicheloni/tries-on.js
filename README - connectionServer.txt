@@ -1,3 +1,3 @@
-El servidor de prueba de conección permite verificar la conectividad entre el cliente y el servidor. Para hacer esto hay que enviarle un request con un parámetro "url" en el query string. 
+El servidor de prueba de conección permite verificar la conectividad entre el cliente y el servidor. Para hacer esto hay que enviarle un request al server con un parámetro "url" en el query string. 
 Por ejemplo: si el servidor de prueba de conección está levantado en localhost:3001 y la aplicación que queremos probar está en 192.168.2.45:3000 entonces el request debe ser así: http://localhost:3001/?url=http://192.168.2.45:3000.
 Luego el cliente levantado en 192.168.2.45:3000 recibirá un request con un mensaje para verificar que todo está correcto.

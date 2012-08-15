@@ -1,10 +1,12 @@
 var http = require("http");
 var RD = require('./lib/requestDispatcher');
 var requestDispatcher = RD.requestDispatcher;
+var RP = require('./lib/resourceProvider').resourceProvider;
 
 requestDispatcher.addHandler(
-	new RD.UrlHandler('/test/.*', function(request, response){
-		response.write('test');
+	new RD.UrlHandler('/index', function(request, response){
+		response.setHeader("Content-Type", "text/html");
+		response.write(RP.getResource('index.html'));
 		response.end();
 	})
 );

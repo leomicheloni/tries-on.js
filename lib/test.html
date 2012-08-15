@@ -1,0 +1,24 @@
+<html>
+<head>
+<script type="text/javascript" src="playerManager.js"></script>
+<script type="text/javascript">
+(function(){
+	function assert(a, b){
+		if(a!=b) throw new Error();
+		console.log("ok");
+	}
+	
+	function persistPlayerTest(){
+		var playerToAdd = {url: "http://url.com", name: "João Havelange"};
+		playerManager.add(playerToAdd);
+		
+		assert(playerManager.get(playerToAdd.url), playerToAdd);
+	}
+	
+	persistPlayerTest();
+	
+})();
+</script>
+</head>
+<body></body>
+</html>

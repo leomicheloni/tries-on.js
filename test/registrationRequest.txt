@@ -1,0 +1,5 @@
+POST /jugador HTTP/1.1
+Host: localhost:3002
+Content-Length: 47
+
+nombre=cosme fulanito&url=http://localhost:3004

@@ -22,18 +22,5 @@ http.createServer(function (request, response) {
 			response.end();
 		});
 	}
-	
-	/*
-	var urlClienteRaw = '' + url.parse(request.url, true).query.url;
-	var urlCliente = url.parse(urlClienteRaw, true);
-	
-	var req = http.request({ hostname: urlCliente.hostname, port: urlCliente.port, method: 'GET', path: '/?ok' }, function(res) {
-		console.log('se envio el request al cliente ' + urlClienteRaw);
-	});
-	req.on('error', function(e) {
-	  console.log('problem with request: ' + e.message);
-	});
-	req.end();
-	*/
  })
 .listen(3002);

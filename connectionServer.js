@@ -1,19 +1,50 @@
 var http = require("http");
+var qs = require('querystring');
+
 var RD = require('./lib/requestDispatcher');
+
 var requestDispatcher = RD.requestDispatcher;
-var RP = require('./lib/resourceProvider').resourceProvider;
+var resourceProvider = require('./lib/resourceProvider').resourceProvider;
+var game = require('./lib/game').game;
 
 requestDispatcher.addHandler(
 	new RD.UrlHandler('/index', function(request, response){
-		response.setHeader("Content-Type", "text/html");
-		response.write(RP.getResource('index.html'));
-		response.end();
+		console.log('bien');
+		writeStaticAndEnd(response, 'index.html');
+	})
+);
+
+requestDispatcher.addHandler(
+	new RD.UrlHandler('/add', function(request, response){
+		if (request.method != 'POST') {
+			writeStaticAndEnd(response, '404.html');
+			return;
+		}
+		
+		var body = '';
+        request.on('data', function (data) {
+            body += data;
+        });
+        request.on('end', function () {
+            var post = qs.parse(body);
+			
+			console.dir({ name: post.nombre,  url: post.url });
+			game.addPlayer({ name: post.nombre,  url: post.url });
+			
+			writeStaticAndEnd(response, 'agregado.html');
+        });
 	})
 );
 
 http.createServer(function (request, response) {
-	request.setEncoding("utf-8");
-	
 	requestDispatcher.dispatch(request, response);
  })
 .listen(3001);
+
+game.start();
+
+function writeStaticAndEnd(response, resource) {
+	response.setHeader("Content-Type", "text/html");
+	response.write(resourceProvider.getResource(resource));
+	response.end();
+}

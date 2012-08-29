@@ -6,7 +6,7 @@ http.createServer(function (request, response) {
 	
 	console.log(request.query);
 	
-	response.write("31");
+	response.write("OK");
 	response.end();
  })
-.listen(3000);
+.listen(3002);

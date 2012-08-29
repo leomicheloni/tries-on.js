@@ -1,6 +1,25 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script type="text/javascript">
+		$(function(){
+ 			$.ajax({
+				type: "GET",
+				url: 'localhost:3000/leaderboardJSON',
+				dataType: "json",
+				error: ajaxError,
+				success: ajaxSuccess
+			});	
+		});
+		
+		function ajaxError(){
+			alert('Daaaaaaaaaaaangerboy');
+		}
+		
+		function ajaxSuccess(data){
+			alert('Lean es puto ' + data); 
+		}
+	</script>
 </head>
 <body>
 	<h1>¡Bienvenido al LeaderBoard!</h1>

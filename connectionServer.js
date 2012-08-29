@@ -31,8 +31,7 @@ requestDispatcher.addHandler(
 			
 			console.dir({ name: post.nombre,  url: post.url });
 			game.addPlayer({ name: post.nombre,  url: post.url });
-			leaderboard.getPlayers();
-			
+						
 			writeStaticAndEnd(response, 'agregado.html');
         });
 	})
@@ -42,6 +41,14 @@ requestDispatcher.addHandler(
 	new RD.UrlHandler('/leaderboard', function(request, response){
 		console.log('entre a la tabla de puntajes');
 		writeStaticAndEnd(response, 'leaderboard.html');
+	})
+);
+
+requestDispatcher.addHandler(
+	new RD.UrlHandler('/leaderboardJSON', function(request, response){
+		response.setHeader("Content-Type", "application/json");
+		response.write(leaderboard.getPlayers());
+		response.end();
 	})
 );
 

@@ -6,6 +6,7 @@ var RD = require('./lib/requestDispatcher');
 var requestDispatcher = RD.requestDispatcher;
 var resourceProvider = require('./lib/resourceProvider').resourceProvider;
 var game = require('./lib/game').game;
+var leaderboard = require('./lib/leaderboard').leaderboard;
 
 requestDispatcher.addHandler(
 	new RD.UrlHandler('/index', function(request, response){
@@ -30,9 +31,17 @@ requestDispatcher.addHandler(
 			
 			console.dir({ name: post.nombre,  url: post.url });
 			game.addPlayer({ name: post.nombre,  url: post.url });
+			leaderboard.getPlayers();
 			
 			writeStaticAndEnd(response, 'agregado.html');
         });
+	})
+);
+
+requestDispatcher.addHandler(
+	new RD.UrlHandler('/leaderboard', function(request, response){
+		console.log('entre a la tabla de puntajes');
+		writeStaticAndEnd(response, 'leaderboard.html');
 	})
 );
 

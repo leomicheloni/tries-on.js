@@ -1,5 +1,6 @@
 var http = require("http");
 var qs = require('querystring');
+var url = require('url');
 
 var RD = require('./lib/requestDispatcher');
 
@@ -10,7 +11,6 @@ var leaderboard = require('./lib/leaderboard').leaderboard;
 
 requestDispatcher.addHandler(
 	new RD.UrlHandler('/index', function(request, response){
-		console.log('bien');
 		writeStaticAndEnd(response, 'index.html');
 	})
 );
@@ -31,7 +31,7 @@ requestDispatcher.addHandler(
 			
 			console.dir({ name: post.nombre,  url: post.url });
 			game.addPlayer({ name: post.nombre,  url: post.url });
-						
+			
 			writeStaticAndEnd(response, 'agregado.html');
         });
 	})
@@ -39,16 +39,22 @@ requestDispatcher.addHandler(
 
 requestDispatcher.addHandler(
 	new RD.UrlHandler('/leaderboard', function(request, response){
-		console.log('entre a la tabla de puntajes');
 		writeStaticAndEnd(response, 'leaderboard.html');
 	})
 );
 
 requestDispatcher.addHandler(
-	new RD.UrlHandler('/leaderboardJSON', function(request, response){
+	new RD.UrlHandler('/JSONLeaderboard', function(request, response){
 		response.setHeader("Content-Type", "application/json");
-		response.write(leaderboard.getPlayers());
+		response.write(JSON.stringify(leaderboard.getPlayers()));
 		response.end();
+	})
+);
+
+requestDispatcher.addHandler(
+	new RD.UrlHandler('/static/.*', function(request, response){
+		var staticResourceName = url.parse(request.url).path.replace('/static/', '');
+		writeStaticAndEnd(response, staticResourceName);
 	})
 );
 

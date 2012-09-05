@@ -1,42 +1,72 @@
 <html>
 <head>
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script  type="text/javascript" src="static/jquery/jquery-1.8.1.min.js"></script>
 	<script type="text/javascript">
+		var leaderLineTemplate = '<tr><td>{index}</td><td>{name}</td><td>{url}</td><td>{score}</td></tr>';
+		var noLeadersYetMessage = '<tr><td colspan=4>No hay jugadores aun</td></tr>';
+		var errorCount = 0;
+		var errorTolerance = 5;
+		var loader;
+		
 		$(function(){
- 			$.ajax({
-				type: "GET",
-				url: 'localhost:3000/leaderboardJSON',
-				dataType: "json",
-				error: ajaxError,
-				success: ajaxSuccess
-			});	
+ 			loadLeaders();
+			loader = setInterval(loadLeaders, 1000);
 		});
 		
-		function ajaxError(){
-			alert('Daaaaaaaaaaaangerboy');
+		function loadLeaders() {
+			$.ajax({
+				type: "GET",
+				url: 'JSONLeaderboard',
+				dataType: "json",
+				success: function (leaders, textStatus, jqXHR) {
+					fill(leaders);
+				},
+				error: function (jqXHR, textStatus, errorThrown) {
+					errorCount++;
+					
+					if (errorCount > errorTolerance) {
+						alert('Hubo un error: ' + textStatus);
+						clearInterval(loader);
+					}
+				}
+			});
 		}
 		
-		function ajaxSuccess(data){
-			alert('Lean es puto ' + data); 
+		function fill(leaders) {
+			$('table tbody').empty();
+			
+			if (leaders.length == 0) {
+				$('table tbody').append(noLeadersYetMessage);
+				return;
+			}
+			
+			for (i = 0; i < leaders.length; i++) {
+				agregar(i + 1, leaders[i]);
+			}
+		}
+		
+		function agregar(index, leader) {
+			var newLeader = leaderLineTemplate;
+			newLeader = newLeader.replace('{index}', index);
+			newLeader = newLeader.replace('{name}', leader.name);
+			newLeader = newLeader.replace('{url}', leader.url);
+			newLeader = newLeader.replace('{score}', leader.score);
+			$('table tbody').append(newLeader);
 		}
 	</script>
 </head>
 <body>
-	<h1>¡Bienvenido al LeaderBoard!</h1>
+	<h1>Â¡Bienvenido al LeaderBoard!</h1>
 	<p>Jugadores:</p>
 	<table>
-		<tr>
-			<td></td>
-			<td>Nombre</td>
-			<td>URL</td>
-			<td>Puntaje</td>
-		</tr>
-		<tr>
-			<td>1</td>
-			<td></td>
-			<td></td>
-			<td></td>
-		</tr>
+		<thead>
+			<th></th>
+			<th>Nombre</th>
+			<th>URL</th>
+			<th>Puntaje</th>
+		</thead>
+		<tbody></tbody>
 	</table>
 </body>
 </html>

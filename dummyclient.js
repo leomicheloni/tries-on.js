@@ -4,9 +4,11 @@ var url = require("url");
 http.createServer(function (request, response) {
 	request.setEncoding("utf-8");
 	
-	console.log(request.query);
+	var body = '';
+	request.on('data', function (data) { body += data; });
+	request.on('end', function () { console.log(body); });
 	
-	response.write("OK");
+	response.write("10");
 	response.end();
  })
 .listen(3002);

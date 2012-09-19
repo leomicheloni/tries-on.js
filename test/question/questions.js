@@ -29,3 +29,12 @@ var estatica = new Questions.StaticQuestion('pregunta', 'respuesta');
 Assert.ok(estatica.isAnswerCorrect('respuesta'), "Pregunta estática espera respuesta estática");
 Assert.ok(!estatica.isAnswerCorrect('otra cosa'), "Pregunta estática espera sólo respuesta estática");
 Assert.equal(estatica.getText(), 'pregunta', 'La pregunta es pregunta');
+
+var enumeracion = new Questions.MustHaveAtLeastQuestion('Diga 2', 2, ['Hola', 'Chau', 'Adios', 'Hasta luego', 'Bienvenido'])
+Assert.ok(enumeracion.isAnswerCorrect('Hola, Chau'), "Enumeración: Justo lo que piden");
+Assert.ok(enumeracion.isAnswerCorrect('Chau, Hola'), "Enumeración: no importa el orden");
+Assert.ok(!enumeracion.isAnswerCorrect('Hola, Hola'), "Enumeración: Repetir no vale");
+Assert.ok(!enumeracion.isAnswerCorrect('Hola'), "Enumeración: Con una no alcanza");
+Assert.ok(enumeracion.isAnswerCorrect('Hola, Chau, Hasta luego, Adios'), "Enumeración: Mas de lo que piden");
+Assert.ok(enumeracion.isAnswerCorrect('Hola que tal mi nombre es Juan Chau'), "Enumeración: Lo que piden y basura");
+Assert.ok(enumeracion.isAnswerCorrect('hola chau'), "Enumeración: Es case insensitive");

@@ -45,9 +45,13 @@ requestDispatcher.addHandler(
 
 requestDispatcher.addHandler(
 	new RD.UrlHandler('/JSONLeaderboard', function(request, response){
-		response.setHeader("Content-Type", "application/json");
-		response.write(JSON.stringify(leaderboard.getPlayers()));
-		response.end();
+		writeTextAndEnd(response, JSON.stringify(leaderboard.getPlayers()));
+	})
+);
+
+requestDispatcher.addHandler(
+	new RD.UrlHandler('/palabramagica', function(request, response){
+		writeTextAndEnd(response, 'La palabra magica es abracadabra.')
 	})
 );
 
@@ -68,5 +72,10 @@ game.start();
 function writeStaticAndEnd(response, resource) {
 	response.setHeader("Content-Type", "text/html");
 	response.write(resourceProvider.getResource(resource));
+	response.end();
+}
+function writeTextAndEnd(response, text) {
+	response.setHeader("Content-Type", "text/html");
+	response.write(text);
 	response.end();
 }

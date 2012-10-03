@@ -8,7 +8,14 @@ var requestDispatcher = RD.requestDispatcher;
 var resourceProvider = require('./lib/resourceProvider').resourceProvider;
 var game = require('./lib/game').game;
 var leaderboard = require('./lib/leaderboard').leaderboard;
-
+/*
+requestDispatcher.addHandler(
+	 new RD.UrlHandler("/[url].", function(request, response){
+		var clientUrl = url.parse(request.url, true, true).query;
+		writeTextAndEnd(response, "hola!!, tu url es " + clientUrl.url);
+	 })
+ );
+*/
 requestDispatcher.addHandler(
 	new RD.UrlHandler('/index', function(request, response){
 		writeStaticAndEnd(response, 'index.html');
@@ -63,6 +70,7 @@ requestDispatcher.addHandler(
 );
 
 http.createServer(function (request, response) {
+	request.setEncoding('utf8');
 	requestDispatcher.dispatch(request, response);
  })
 .listen(3001);
@@ -70,12 +78,12 @@ http.createServer(function (request, response) {
 game.start();
 
 function writeStaticAndEnd(response, resource) {
-	response.setHeader("Content-Type", "text/html");
+	response.setHeader("Content-Type", "text/html; charset=utf8");
 	response.write(resourceProvider.getResource(resource));
 	response.end();
 }
 function writeTextAndEnd(response, text) {
-	response.setHeader("Content-Type", "text/html");
+	response.setHeader("Content-Type", "text/html; charset=utf8");
 	response.write(text);
 	response.end();
 }

@@ -38,11 +38,32 @@ requestDispatcher.addHandler(
 );
 
 requestDispatcher.addHandler(
+	new RD.UrlHandler('/pause', function(request, response){
+		game.pause();
+		console.log('Cambio de estado: ' + game.status);
+		writeTextAndEnd(response, game.status);
+	})
+);
+requestDispatcher.addHandler(
+	new RD.UrlHandler('/start', function(request, response){
+		game.start();
+		console.log('Cambio de estado: ' + game.status);
+		writeTextAndEnd(response, game.status);
+	})
+);
+requestDispatcher.addHandler(
+	new RD.UrlHandler('/stop', function(request, response){
+		game.stop();
+		console.log('Cambio de estado: ' + game.status);
+		writeTextAndEnd(response, game.status);
+	})
+);
+
+requestDispatcher.addHandler(
 	new RD.UrlHandler('/leaderboard', function(request, response){
 		writeStaticAndEnd(response, 'leaderboard.html');
 	})
 );
-
 requestDispatcher.addHandler(
 	new RD.UrlHandler('/JSONLeaderboard', function(request, response){
 		writeTextAndEnd(response, JSON.stringify(leaderboard.getPlayers()));
@@ -67,8 +88,6 @@ http.createServer(function (request, response) {
 	requestDispatcher.dispatch(request, response);
  })
 .listen(3001);
-
-game.start();
 
 function writeStaticAndEnd(response, resource) {
 	response.setHeader("Content-Type", "text/html; charset=utf8");

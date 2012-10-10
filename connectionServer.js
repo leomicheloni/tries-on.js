@@ -8,14 +8,7 @@ var requestDispatcher = RD.requestDispatcher;
 var resourceProvider = require('./lib/resourceProvider').resourceProvider;
 var game = require('./lib/game').game;
 var leaderboard = require('./lib/leaderboard').leaderboard;
-/*
-requestDispatcher.addHandler(
-	 new RD.UrlHandler("/[url].", function(request, response){
-		var clientUrl = url.parse(request.url, true, true).query;
-		writeTextAndEnd(response, "hola!!, tu url es " + clientUrl.url);
-	 })
- );
-*/
+
 requestDispatcher.addHandler(
 	new RD.UrlHandler('/index', function(request, response){
 		writeStaticAndEnd(response, 'index.html');

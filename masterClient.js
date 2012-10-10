@@ -6,7 +6,10 @@ http.createServer(function (request, response) {
 	
 	var body = '';
 	request.on('data', function (data) { body += data; });
-	request.on('end', function () { handleQuestion(body, response); });
+	request.on('end', function () { 
+		var question = body.replace('question=', '');
+		handleQuestion(question, response);
+	});
 	
  })
 .listen(3002);

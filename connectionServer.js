@@ -89,6 +89,8 @@ http.createServer(function (request, response) {
  })
 .listen(3001);
 
+game.level = require('./levels').levels.warmup;
+
 function writeStaticAndEnd(response, resource) {
 	response.setHeader("Content-Type", "text/html; charset=utf8");
 	response.write(resourceProvider.getResource(resource));

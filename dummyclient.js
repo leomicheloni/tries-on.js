@@ -8,7 +8,7 @@ http.createServer(function (request, response) {
 	request.on('data', function (data) { body += data; });
 	request.on('end', function () { console.log(body); });
 	
-	response.write("10");
+	response.write("paso");
 	response.end();
  })
 .listen(3002);

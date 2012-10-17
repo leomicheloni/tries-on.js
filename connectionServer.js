@@ -16,6 +16,15 @@ requestDispatcher.addHandler(
 );
 
 requestDispatcher.addHandler(
+	new RD.UrlHandler('/level', function(request, response){
+		var level = url.parse(request.url, false, true).path.substr(7);
+		game.level = require('./levels').levels[level];
+		console.log('Se cambió el level a ' + level);
+		writeTextAndEnd(response, 'Se cambió el level a ' + level);
+	})
+);
+
+requestDispatcher.addHandler(
 	new RD.UrlHandler('/add', function(request, response){
 		if (request.method != 'POST') {
 			writeStaticAndEnd(response, '404.html');

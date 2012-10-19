@@ -3,7 +3,7 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<script  type="text/javascript" src="static/jquery/jquery-1.8.1.min.js"></script>
 	<script type="text/javascript">
-		var leaderLineTemplate = '<tr><td style="background-color: #DCDDC0">{name}</td><td style="background-color: #DCDDC0">{url}</td><td style="background-color: #DCDDC0; text-align: right;padding-right: 100px;">{score}</td></tr>';
+		var leaderLineTemplate = '<tr><td style="background-color: #DCDDC0">{name}</td><td style="background-color: #DCDDC0">{lastOkQuestion}</td><td style="background-color: #DCDDC0; text-align: right;padding-right: 100px;">{score}</td></tr>';
 		var noLeadersYetMessage = '<tr><td colspan="3" style="background-color: #DCDDC0">No hay jugadores aun</td></tr>';
 		var errorCount = 0;
 		var errorTolerance = 5;
@@ -50,7 +50,7 @@
 			var newLeader = leaderLineTemplate;
 			newLeader = newLeader.replace('{index}', index);
 			newLeader = newLeader.replace('{name}', leader.name);
-			newLeader = newLeader.replace('{url}', leader.url);
+			newLeader = newLeader.replace('{lastOkQuestion}', leader.lastOkQuestion);
 			newLeader = newLeader.replace('{score}', leader.score);
 			$('table tbody').append(newLeader);
 		}
@@ -61,7 +61,7 @@
 	<table style='font-family: Verdana; width: 100%; border: 1px solid; font-size: 24; border-color: #999; margin-top: 20px;'>
 		<thead style='background-color: #B5CFD2'>
 			<th>Equipo</th>
-			<th>URL</th>
+			<th>Última pregunta contestada bien</th>
 			<th>Puntos</th>
 		</thead>
 		<tbody></tbody>

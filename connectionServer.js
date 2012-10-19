@@ -80,6 +80,12 @@ requestDispatcher.addHandler(
 );
 
 requestDispatcher.addHandler(
+	new RD.UrlHandler('/admin', function(request, response){
+		writeStaticAndEnd(response, 'admin.html');
+	})
+);
+
+requestDispatcher.addHandler(
 	new RD.UrlHandler('/palabramagica', function(request, response){
 		writeTextAndEnd(response, 'La palabra magica es abracadabra.')
 	})

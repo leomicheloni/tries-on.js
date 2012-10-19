@@ -1,0 +1,45 @@
+<html>
+<head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+	<script  type="text/javascript" src="static/jquery/jquery-1.8.1.min.js"></script>
+	<script type="text/javascript">
+		$(function(){
+			$('a.run').click(function(ev) {
+				var href = $(this).attr('href');
+				$.get(href).done(function(a) { $('#targetRun').html(a) });
+				return false;
+			});
+			
+			$('a.level').click(function(ev) {
+				var href = $(this).attr('href');
+				$.get(href).done(function(a) { $('#targetLevel').html(a) });
+				return false;
+			});
+		});
+	</script>
+</head>
+<body>
+
+<table width="100%" style="height: 150px;">
+	<tbody>
+		<tr>
+			<td width="50%">
+				<a href="/start" class="run">Start</a></br>
+				<a href="/pause" class="run">Pause</a></br>
+				<p id="targetRun"></p>
+			</td>
+			<td width="50%">
+				<a href="/level/warmup" class="level">Warmup</a></br>
+				<a href="/level/easy" class="level">Easy</a></br>
+				<a href="/level/medium" class="level">Medium</a></br>
+				<a href="/level/hard" class="level">Hard</a></br>
+				<p id="targetLevel" class="level"></p>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+<iframe src="leaderboard" style="width: 100%;height: 100%;border: 0;"></iframe>
+
+</body>
+</html>

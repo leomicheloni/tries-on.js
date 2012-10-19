@@ -20,7 +20,7 @@ requestDispatcher.addHandler(
 		var level = url.parse(request.url, false, true).path.substr(7);
 		game.level = require('./levels').levels[level];
 		console.log('Se cambió el level a ' + level);
-		writeTextAndEnd(response, 'Se cambió el level a ' + level);
+		writeTextAndEnd(response, level);
 	})
 );
 
@@ -60,13 +60,6 @@ requestDispatcher.addHandler(
 requestDispatcher.addHandler(
 	new RD.UrlHandler('/start', function(request, response){
 		game.start();
-		console.log('Cambio de estado: ' + game.status);
-		writeTextAndEnd(response, game.status);
-	})
-);
-requestDispatcher.addHandler(
-	new RD.UrlHandler('/stop', function(request, response){
-		game.stop();
 		console.log('Cambio de estado: ' + game.status);
 		writeTextAndEnd(response, game.status);
 	})

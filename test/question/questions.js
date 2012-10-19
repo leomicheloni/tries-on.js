@@ -38,3 +38,7 @@ Assert.ok(!enumeracion.isAnswerCorrect('Hola'), "Enumeración: Con una no alcanza
 Assert.ok(enumeracion.isAnswerCorrect('Hola, Chau, Hasta luego, Adios'), "Enumeración: Mas de lo que piden");
 Assert.ok(enumeracion.isAnswerCorrect('Hola que tal mi nombre es Juan Chau'), "Enumeración: Lo que piden y basura");
 Assert.ok(enumeracion.isAnswerCorrect('hola chau'), "Enumeración: Es case insensitive");
+
+var stored = new Questions.StoredQuestion(0);
+Assert.ok(stored.getText(), 'Resuelva la siguiente suma: 1 + 1', 'No se pueden cargar las preguntas');
+Assert.ok(stored.isAnswerCorrect('2'), 'La respuesta de la pregunta cargada no es correcta');

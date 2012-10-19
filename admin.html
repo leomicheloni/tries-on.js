@@ -19,27 +19,12 @@
 	</script>
 </head>
 <body>
-
-<table width="100%" style="height: 150px;">
-	<tbody>
-		<tr>
-			<td width="50%">
-				<a href="/start" class="run">Start</a></br>
-				<a href="/pause" class="run">Pause</a></br>
-				<p id="targetRun"></p>
-			</td>
-			<td width="50%">
-				<a href="/level/warmup" class="level">Warmup</a></br>
-				<a href="/level/easy" class="level">Easy</a></br>
-				<a href="/level/medium" class="level">Medium</a></br>
-				<a href="/level/hard" class="level">Hard</a></br>
-				<p id="targetLevel" class="level"></p>
-			</td>
-		</tr>
-	</tbody>
-</table>
-
-<iframe src="leaderboard" style="width: 100%;height: 100%;border: 0;"></iframe>
-
+<span style='font-family: Verdana;font-size: 40;'>Extreme Startup Coding Competition by Kinetica Solutions</span>
+<br><br>
+<span style='font-family: Verdana;font-size: 25;font-weight: bold;'>Estado: <span style='font-weight: normal;' id="targetRun">Ejecutando</span></span>&nbsp;&nbsp;&nbsp;<a style='font-family: Verdana' href="/start" class="run">Empezar/Reanudar</a>&nbsp;&nbsp;<a style='font-family: Verdana' href="/pause" class="run">Pausar</a></br></br><br>
+<span style='font-family: Verdana;font-size: 25;font-weight: bold;'>Nivel actual: <span id="targetLevel" style='font-weight: normal;' class="level">Fácil</span></span>&nbsp;&nbsp;&nbsp;<a style='font-family: Verdana' href="/level/warmup" class="level">Warmup</a>&nbsp;&nbsp;<a style='font-family: Verdana' href="/level/easy" class="level">Easy</a>&nbsp;&nbsp;<a style='font-family: Verdana' href="/level/medium" class="level">Medium</a>&nbsp;&nbsp;<a style='font-family: Verdana' href="/level/hard" class="level">Hard</a>			
+<br>
+<br>
+<input type="button" style='font-family: Verdana;font-size: 25;' onClick="location.href='leaderboard.html'" value="Ir al leaderboard" />
 </body>
 </html>

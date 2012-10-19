@@ -3,8 +3,8 @@
 	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 	<script  type="text/javascript" src="static/jquery/jquery-1.8.1.min.js"></script>
 	<script type="text/javascript">
-		var leaderLineTemplate = '<tr><td>{index}</td><td>{name}</td><td>{url}</td><td>{score}</td></tr>';
-		var noLeadersYetMessage = '<tr><td colspan=4>No hay jugadores aun</td></tr>';
+		var leaderLineTemplate = '<tr><td style="background-color: #DCDDC0">{name}</td><td style="background-color: #DCDDC0">{url}</td><td style="background-color: #DCDDC0; text-align: right;padding-right: 100px;">{score}</td></tr>';
+		var noLeadersYetMessage = '<tr><td colspan="3" style="background-color: #DCDDC0">No hay jugadores aun</td></tr>';
 		var errorCount = 0;
 		var errorTolerance = 5;
 		var loader;
@@ -57,14 +57,12 @@
 	</script>
 </head>
 <body>
-	<h1>¡Bienvenido al LeaderBoard!</h1>
-	<p>Jugadores:</p>
-	<table>
-		<thead>
-			<th></th>
-			<th>Nombre</th>
+	<span style='font-family: Verdana;font-size: 45;'>Extreme Startup Leaderboard</span><img style='width: 193px;float: right;' src="C:\Kinetica\Diseño Gráfico\Logos\logo.jpg" /><br>
+	<table style='font-family: Verdana; width: 100%; border: 1px solid; font-size: 24; border-color: #999; margin-top: 20px;'>
+		<thead style='background-color: #B5CFD2'>
+			<th>Equipo</th>
 			<th>URL</th>
-			<th>Puntaje</th>
+			<th>Puntos</th>
 		</thead>
 		<tbody></tbody>
 	</table>

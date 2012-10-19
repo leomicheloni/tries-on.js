@@ -38,6 +38,10 @@ requestDispatcher.addHandler(
         request.on('end', function () {
             var post = qs.parse(body);
 			
+			if (post.url.substr(0, 7) != 'http://') {
+				post.url = 'http://' + post.url;
+			}
+			
 			console.dir({ name: post.nombre,  url: post.url });
 			game.addPlayer({ name: post.nombre,  url: post.url });
 			

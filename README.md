@@ -7,4 +7,6 @@ Built with node.js.
 
 Used in [Agiles 2012](http://agiles2012.agiles.org/programa/dia-2/extreme-startup-coding-competition/) conference in Córdoba, Argentina.
 
+![alt tag](http://leomicheloni.com/image.axd?picture=Windows-Live-Writer/Extreme/0FDEC497/IMG_2782.jpg)
+
 Enjoy!

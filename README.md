@@ -4,10 +4,10 @@ A game for developers based on [Extreme Startup Code Competition](http://johanne
 
 Built with node.js.
 
-Used in [Agiles 2012](http://agiles2012.agiles.org/programa/dia-2/extreme-startup-coding-competition/) conference in Córdoba, Argentina.
+Used at [Agiles 2012](http://agiles2012.agiles.org/programa/dia-2/extreme-startup-coding-competition/) conference in Córdoba, Argentina.
 
 ![alt tag](http://leomicheloni.com/image.axd?picture=Windows-Live-Writer/Extreme/0FDEC497/IMG_2782.jpg)
 
-And in [Microfost User Group in Buenos Aires, Argentina] (http://www.meetup.com/agiles-bsas/events/104616042/)
+And at [Microfost User Group in Buenos Aires, Argentina] (http://www.meetup.com/agiles-bsas/events/104616042/)
 
 Enjoy!
